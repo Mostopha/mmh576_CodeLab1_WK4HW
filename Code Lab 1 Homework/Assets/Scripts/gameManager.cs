@@ -12,12 +12,15 @@ public class gameManager : MonoBehaviour {
     public GameObject player1Text;
     public GameObject player2Text;
 
-    public GameObject scoreText;
+    public GameObject playerOneScoreText;
+    public GameObject playerTwoScoreText;
 
-    private Text txt;
+    private Text txt1;
+    private Text txt2;
 
-    private static int score;
-    
+    private static int playerOneScore;
+    private static int playerTwoScore;
+
 
     public static gameManager instance;
 
@@ -38,16 +41,19 @@ public class gameManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        txt = scoreText.GetComponent<Text>();
+        txt1 = playerOneScoreText.GetComponent<Text>();
+        txt2 = playerTwoScoreText.GetComponent<Text>();
 
-        txt.text =" " +score;
-      
+        txt1.text ="P1: "+playerOneScore;
+        txt2.text = "P2: " + playerTwoScore;
+
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        txt.text = " " + score;
+        txt1.text = "P1 " + playerOneScore;
+        txt2.text = "P2 " + playerTwoScore;
 
         if (player1 == null)
         {
@@ -57,7 +63,7 @@ public class gameManager : MonoBehaviour {
             incrementScore = true;
             if(incrementScore == true)
             {
-                score++;
+                playerOneScore++;
                 incrementScore = false;
             }
             
@@ -71,7 +77,7 @@ public class gameManager : MonoBehaviour {
             incrementScore = true;
             if (incrementScore == true)
             {
-                score--;
+                playerTwoScore++;
                 incrementScore = false;
             }
         }
