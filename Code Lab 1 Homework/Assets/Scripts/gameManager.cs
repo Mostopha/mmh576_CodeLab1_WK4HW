@@ -21,6 +21,8 @@ public class gameManager : MonoBehaviour {
     private static int playerOneScore;
     private static int playerTwoScore;
 
+    private const string PREF_HIGH_SCORE = "highScorePref";
+
 
     public static gameManager instance;
 
