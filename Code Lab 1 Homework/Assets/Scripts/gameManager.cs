@@ -14,14 +14,44 @@ public class gameManager : MonoBehaviour {
 
     public GameObject playerOneScoreText;
     public GameObject playerTwoScoreText;
+    public GameObject highScoreText;
 
     private Text txt1;
     private Text txt2;
+    private Text highScoreTxt;
 
     private static int playerOneScore;
     private static int playerTwoScore;
 
     private const string PREF_HIGH_SCORE = "highScorePref";
+
+    private int highScore = 33;
+
+    public int HighScore
+    {
+        get
+        {
+            highScore = PlayerPrefs.GetInt(PREF_HIGH_SCORE);
+            return highScore;
+        }
+
+        set
+        {
+            if (playerOneScore > HighScore)
+            {
+                HighScore = playerOneScore;
+            }
+
+            if (playerTwoScore > HighScore)
+            {
+                HighScore = playerTwoScore;
+            }
+
+            Debug.Log("Confetti!!!");
+            highScore = value;
+            PlayerPrefs.SetInt(PREF_HIGH_SCORE, highScore);
+        }
+    }
 
 
     public static gameManager instance;
@@ -45,10 +75,11 @@ public class gameManager : MonoBehaviour {
 
         txt1 = playerOneScoreText.GetComponent<Text>();
         txt2 = playerTwoScoreText.GetComponent<Text>();
+        highScoreTxt = highScoreText.GetComponent<Text>();
 
         txt1.text ="P1: "+playerOneScore;
         txt2.text = "P2: " + playerTwoScore;
-
+        highScoreTxt.text = "HS: " + highScore;
     }
 	
 	// Update is called once per frame
