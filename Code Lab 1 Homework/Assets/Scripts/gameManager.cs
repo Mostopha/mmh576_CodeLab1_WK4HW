@@ -25,9 +25,9 @@ public class gameManager : MonoBehaviour {
 
     private const string PREF_HIGH_SCORE = "highScorePref";
 
-    private int highScore = 33;
+    private static int highScore = 33;
 
-    public int HighScore
+    public static int HighScore
     {
         get
         {
@@ -48,7 +48,6 @@ public class gameManager : MonoBehaviour {
             }
 
             Debug.Log("Confetti!!!");
-            highScore = value;
             PlayerPrefs.SetInt(PREF_HIGH_SCORE, highScore);
         }
     }
